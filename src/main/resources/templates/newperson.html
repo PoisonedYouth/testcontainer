@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- See configuration in WebMvConfig.java -->
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <script th:src="@{/jquery/jquery.min.js}"></script>
+    <script th:src="@{/popper/popper.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <title>New Person</title>
+</head>
+<body>
+<div class="container">
+    <form action="#" th:action="@{/persons/new}" th:object="${person}" method="post">
+        <div class="form-group">
+            <label for="firstname">FirstName</label>
+            <input id="firstname" class="form-control" type="text" th:field="*{firstname}"/>
+            <span class="error" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Missing firstname</span>
+        </div>
+        <div class="form-group">
+            <label for="lastname">Lastname</label>
+            <input id="lastname" class="form-control" type="text" th:field="*{lastname}"/>
+            <span class="error" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Missing lastname</span>
+        </div>
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input id="age" class="form-control" type="number" th:field="*{age}"/>
+            <span class="error" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Missing age</span>
+        </div>
+        <input id="addPerson" class="btn btn-primary" type="submit" value="Submit" />
+        <a th:id="back" class="btn btn-secondary" th:href="@{/persons}"><span th:text="Back"></span></a>
+    </form>
+
+</div>
+</body>
+</html>

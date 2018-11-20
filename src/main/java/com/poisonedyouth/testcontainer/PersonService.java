@@ -28,7 +28,7 @@ public class PersonService {
 
 	public Person findPersonById(Integer id) {
 		Optional<Person> person = personRepository.findById(id);
-		return person.get();
+		return person.orElse(null);
 	}
 
 	public void deletePerson(Person existingPerson) {
