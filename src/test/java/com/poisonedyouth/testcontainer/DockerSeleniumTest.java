@@ -35,8 +35,7 @@ public class DockerSeleniumTest {
 	}
 
 
-	//docker co
-	// ntainer run -d --name selenium-hub -p 4444:4444 selenium/hub:3.4.0
+	//docker container run -d --name selenium-hub -p 4444:4444 selenium/hub:3.4.0
 
 	//docker container run -d --name chrome -e HUB_PORT_4444_TCP_ADDR=selenium-hub -e
 	//HUB_PORT_4444_TCP_PORT=4444 -e DISPLAY=99.0 -e SE_OPTS="-port5556"

@@ -142,4 +142,24 @@ public class AdvancedSeleniumTest {
 		assertThat(existingPerson.getLastname()).isEqualTo("Mustermann");
 		assertThat(existingPerson.getAge()).isEqualTo(12);
 	}
+
+	@Test
+	public void editPersonValidationIsWorking() {
+		Person personBefore = personService.findPersonById(1);
+
+		driver.findElement(By.id("editPerson0")).click();
+
+		WebElement firstname = driver.findElement(By.id("firstname"));
+		firstname.clear();
+		WebElement lastname = driver.findElement(By.id("lastname"));
+		lastname.clear();
+		WebElement age = driver.findElement(By.id("age"));
+		age.clear();
+		driver.findElement(By.id("updatePerson")).click();
+
+		assertThat(driver.getTitle()).isEqualTo("Edit Person");
+
+		Person personAfter = personService.findPersonById(1);
+		assertThat(personBefore).isEqualTo(personAfter);
+	}
 }
